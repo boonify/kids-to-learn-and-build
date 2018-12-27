@@ -4,11 +4,26 @@ import { render } from "react-dom";
 import "./styles.css";
 
 function App() {
+  const items = [
+    { id: 0, text: "Learn JavaScript", done: false },
+    { id: 1, text: "Learn React", done: false },
+    { id: 2, text: "Play around in glitch.com", done: false },
+    { id: 3, text: "Build something awesome", done: true }
+  ]
   return (
-    <div className="App">
-      <h1>New Year 2019 Resolution</h1>
-      <h2>Join a coding class to learn and build!</h2>
-    </div>
+    <div>
+        <h2>Todos:</h2>
+        <ol>
+        {items.map(item => (
+          <li key={item.id}>
+            <label>
+              <input type="checkbox" disabled readOnly checked={item.done} /> 
+              <span className={item.done ? "done" : ""}>{item.text}</span>
+            </label>
+          </li>
+        ))}
+        </ol>
+      </div>
   );
 }
 
